@@ -1,0 +1,382 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Testimonial marquee keyframes */
+@keyframes marqueeLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marqueeRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Shimmer border for Pro pricing card */
+@property --shimmer-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes shimmerBorder {
+  to {
+    --shimmer-angle: 360deg;
+  }
+}
+
+.pro-card-border {
+  padding: 1.5px;
+  border-radius: 17.5px;
+  background: conic-gradient(
+    from var(--shimmer-angle) at 50% 50%,
+    rgba(124, 58, 237, 0.9),
+    rgba(255, 107, 107, 0.6),
+    rgba(124, 58, 237, 0.2),
+    rgba(255, 107, 107, 0.6),
+    rgba(124, 58, 237, 0.9)
+  );
+  animation: shimmerBorder 3s linear infinite;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0D0D14;
+  color: #F9F7FF;
+}
+
+/* hero mobile layout */
+@media (max-width: 768px) {
+  .hero-section {
+    padding-bottom: 60px;
+  }
+
+  .hero-inner {
+    padding: 72px 24px 0 !important;
+  }
+
+  /* Single column */
+  .hero-columns {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+  }
+
+  /* Left column: full width, centered */
+  .hero-left {
+    flex: none !important;
+    width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .hero-badge-wrap {
+    align-self: center !important;
+  }
+
+  .hero-left h1 {
+    text-align: center !important;
+  }
+
+  .hero-left p {
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+
+  .hero-ctas {
+    justify-content: center !important;
+  }
+
+  .hero-social {
+    justify-content: center !important;
+  }
+
+  /* Right column: visible, stacked below left content */
+  .hero-right {
+    display: flex !important;
+    flex: none !important;
+    width: 100% !important;
+    position: static !important;
+    min-height: auto !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    margin-top: 40px;
+  }
+
+  /* Main SEO card */
+  .hero-main-card-wrap {
+    width: 100% !important;
+    max-width: 340px !important;
+    position: static !important;
+  }
+
+  /* Stat cards row */
+  .hero-stat-row {
+    display: flex !important;
+    flex-direction: row;
+    gap: 12px;
+    width: 100%;
+    max-width: 340px;
+    margin-top: 12px;
+  }
+
+  .hero-stat-card-1,
+  .hero-stat-card-2 {
+    position: static !important;
+    flex: 1 !important;
+  }
+
+  /* Override fixed widths on the inner motion.div of each stat card */
+  .hero-stat-card-1 > div,
+  .hero-stat-card-2 > div {
+    width: 100% !important;
+  }
+
+  /* Features section mobile */
+  .features-container {
+    padding: 0 24px !important;
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .features-grid > div {
+    grid-column: 1 / -1 !important;
+  }
+
+  .features-row2 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* How It Works mobile */
+  .hiw-container {
+    padding: 0 24px !important;
+  }
+
+  /* Move line to the left edge */
+  .hiw-line {
+    left: 16px !important;
+    transform: none !important;
+  }
+
+  /* Switch each step to flex column, indent content past the line */
+  .hiw-step {
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative;
+    padding-left: 40px !important;
+  }
+
+  /* Consistent gap between steps 1 and 2 */
+  .hiw-step:not(:last-child) {
+    margin-bottom: 64px;
+  }
+
+  /* Absolutely position the node on the left edge, aligned with the line */
+  .hiw-node {
+    position: absolute !important;
+    left: 9px !important; /* centers 14px circle on the 16px line */
+    top: 24px !important;
+    width: auto !important;
+    justify-content: flex-start !important;
+  }
+
+  /* Text always first, mockup always second */
+  .hiw-text {
+    order: 1;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .hiw-mockup {
+    order: 2;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .hiw-step-num {
+    display: none !important;
+  }
+
+  /* Testimonials mobile */
+  .testimonials-section {
+    padding: 80px 0 !important;
+  }
+
+  .testimonials-header {
+    padding: 0 24px !important;
+  }
+
+  .testimonials-row2 {
+    display: none !important;
+  }
+
+  .testimonial-card {
+    width: 280px !important;
+  }
+
+  /* Pricing section mobile */
+  .pricing-container {
+    padding: 0 24px !important;
+  }
+
+  .pricing-cards {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  .pricing-card,
+  .pricing-card-pro-outer {
+    transform: scale(1) !important;
+    width: 100% !important;
+  }
+
+  /* FAQ section mobile */
+  .faq-section {
+    padding: 80px 0 !important;
+  }
+
+  .faq-container {
+    padding: 0 24px !important;
+    flex-direction: column !important;
+    gap: 40px !important;
+  }
+
+  .faq-left {
+    width: 100% !important;
+    position: static !important;
+    text-align: center !important;
+  }
+
+  .faq-left p,
+  .faq-left h2 {
+    text-align: center !important;
+  }
+
+  .faq-blob {
+    margin: 32px auto 0 !important;
+  }
+
+  .faq-cta-link {
+    display: block !important;
+    text-align: center !important;
+  }
+
+  .faq-right {
+    width: 100% !important;
+  }
+}
+
+/* FAQ blob animation */
+@keyframes blobMorph {
+  0%, 100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  50% {
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+  }
+}
+
+.faq-blob {
+  width: 200px;
+  height: 200px;
+  background: rgba(124, 58, 237, 0.12);
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: blobMorph 8s ease-in-out infinite;
+}
+
+/* FAQ question text hover color */
+.faq-question-text:hover {
+  color: #A78BFA !important;
+}
+
+/* CTA Banner — background hue-rotate animation */
+@keyframes ctaHue {
+  0%, 100% { filter: hue-rotate(0deg); }
+  50%       { filter: hue-rotate(30deg); }
+}
+
+.cta-bg {
+  animation: ctaHue 8s ease-in-out infinite;
+}
+
+/* CTA form inputs — placeholder + focus */
+.cta-form-input::placeholder {
+  color: rgba(249, 247, 255, 0.35);
+}
+
+.cta-form-input:focus {
+  border-color: #7C3AED !important;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+/* Select — hide default arrow, style option list */
+.cta-form-select {
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  cursor: pointer;
+}
+
+.cta-form-select option {
+  background: #1a0533;
+  color: #F9F7FF;
+}
+
+/* Footer newsletter input */
+.footer-newsletter-input::placeholder {
+  color: rgba(249, 247, 255, 0.35);
+}
+
+.footer-newsletter-input:focus {
+  border-color: #7C3AED !important;
+}
+
+/* CTA mobile */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 80px 24px !important;
+  }
+
+  .cta-headline {
+    font-size: clamp(32px, 8vw, 48px) !important;
+  }
+
+  .cta-form-row {
+    flex-direction: column !important;
+  }
+
+  /* Footer mobile */
+  .footer-grid {
+    grid-template-columns: 1fr 1fr !important;
+    padding: 0 24px !important;
+    gap: 40px !important;
+  }
+
+  .footer-col-brand,
+  .footer-col-newsletter {
+    grid-column: 1 / -1 !important;
+  }
+
+  .footer-social {
+    justify-content: center !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 8px !important;
+    text-align: center !important;
+    padding: 24px !important;
+  }
+}
